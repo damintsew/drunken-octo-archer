@@ -11,6 +11,7 @@
 
     <modules>
         <module>GuiModule</module>
+        <module>RestModule</module>
     </modules>
 
 </project>
