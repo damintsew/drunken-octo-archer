@@ -1,53 +1,17 @@
 'use strict';
 
-var pointyApp = angular.module('pointyApp', ['restangular', 'ui.bootstrap'])
-				.config(function ($routeProvider, RestangularProvider, $locationProvider) {
-					
-					//RestangularProvider.setBaseUrl('http://localhost:8080/pointy-api');
-					RestangularProvider.setBaseUrl("${RestEndpoint}");
-					
-					RestangularProvider.setResponseExtractor(function(response, operation, what, url) {
-					  var newResponse = response.payload;
-					  if (angular.isArray(newResponse)) {
-						    angular.forEach(newResponse, function(value, key) {
-						    	if (newResponse[key] != undefined){
-						    		newResponse[key].originalElement = angular.copy(value);
-						    	}
-						    });
-					  } else {
-						  if (newResponse != undefined) {
-							  newResponse.originalElement = angular.copy(newResponse);
-					  	  }
-					  }						
-					  return newResponse;
-					  
-				    });
-				    
-					$routeProvider.when('/registerPatient',
-				        {
-				            templateUrl:'views/Patient.html',
-				            controller: 'PatientController'
-				        });
-				    $routeProvider.when('/patients',
-				        {
-				            templateUrl: 'views/PatientList.html',
-				            controller: 'PatientController'
-				        });
-				    $routeProvider.when('/patientDetail/:patientId',
-				        {
-				            templateUrl: 'views/Patient.html',
-				            controller: 'PatientController'
-				        });						    
-				    $routeProvider.when('/pointyPieChart',
-				        {
-				            templateUrl: 'views/PieChart.html',
-				            controller: 'PieChartController'
-				        });				    
-				    $routeProvider.when('/pointyBarChart',
-				        {
-				            templateUrl: 'views/BarChart.html',
-				            controller: 'BarChartController'
-				        });	
-				    $routeProvider.otherwise({redirectTo: '/registerPatient'});
-				    //$locationProvider.html5Mode(true);
-});
+
+// Declare app level module which depends on filters, and services
+angular.module('myApp', [
+  'ngRoute',
+  'myApp.filters',
+  'myApp.services',
+  'myApp.directives',
+  'myApp.controllers'
+]).
+config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/', {templateUrl: 'views/IndexView.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/view1', {templateUrl: 'views/partial1.html', controller: 'MyCtrl1'});
+  $routeProvider.when('/view2', {templateUrl: 'views/partial2.html', controller: 'MyCtrl2'});
+  $routeProvider.otherwise({redirectTo: '/'});
+}]);
