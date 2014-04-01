@@ -2,14 +2,14 @@
 
 /* Services */
 
-
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('myApp.services', []).
-  value('version', '0.1').factory('service', [function(){
+myApp.factory('MyService', ['$http', function($http){
         return {
             test : function() {
                 return 'xyu suka bl9';
+            },
+
+            getDataFromServer : function() {
+                return $http.get("/api/image");
             }
         }
     }]);

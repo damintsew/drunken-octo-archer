@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * User: adamintsev
  * Date: 27.01.14
  */
-//@Controller
+@Controller
 //@RequestMapping(value = "upload")
 public class UploadServlet {
 
 
-//    @RequestMapping(value = "image", method = RequestMethod.GET)
+    @RequestMapping(value = "image", method = RequestMethod.GET)
     public  ResponseEntity<String> processFile()  {
             return new ResponseEntity<>("fuck", HttpStatus.OK);
     }
