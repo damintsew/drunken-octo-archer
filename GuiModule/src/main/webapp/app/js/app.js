@@ -44,12 +44,17 @@ config(['$routeProvider', 'RestangularProvider', function($routeProvider, Restan
           templateUrl: 'views/Mathematics.html',
           controller: 'TopicController'
       });
+        $routeProvider.when('/mathematics/:grade',
+      {
+          templateUrl: 'views/Mathematics.html',
+          controller: 'TopicController'
+      });
         $routeProvider.when('/mathematics/test',
       {
           templateUrl: 'views/TestView.html',
           controller: 'TestController'
       });
-  $routeProvider.when('/view1', {templateUrl: 'views/partial1.html', controller: 'MyCtrl1'});
-  $routeProvider.when('/view2', {templateUrl: 'views/partial2.html', controller: 'MyCtrl2'});
+//  $routeProvider.when('/view1', {templateUrl: 'views/partial1.html', controller: 'MyCtrl1'});
+//  $routeProvider.when('/view2', {templateUrl: 'views/partial2.html', controller: 'MyCtrl2'});
 //  $routeProvider.otherwise({redirectTo: '/'});
 }]);
