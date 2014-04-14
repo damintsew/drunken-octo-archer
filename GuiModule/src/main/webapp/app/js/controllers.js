@@ -30,4 +30,13 @@ myApp.controller('MyCtrl1', [function () {
 
 
 
+    }]).
+    controller('MathController', ['$scope', "$location", '$routeParams', 'MyService', function ($scope, $location, $routeParams, MyService) {
+
+        $scope.selectGrade = function(grade) {
+            $location.url('mathematics/' + grade);
+        }
+
+
+
     }]);
